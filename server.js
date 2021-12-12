@@ -4,9 +4,11 @@ const mongoose = require('mongoose')
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./Models/User")
-const routes = require("./Routes")
+
 const app = express()
 
+const ShortenerController = require('./Controller/ShortenController')
+const AuthController = require('./Controller/AuthController')
 const PORT = process.env.PORT || 5000
 
 mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/shortener", {
@@ -41,8 +43,29 @@ app.use(function (req, res,next){
     next();
 })
 
-app.use(routes)
+app.get('/', (req, res) => {res.render("home")})
+app.get("/login", AuthController.getLogin);
+app.get("/register", AuthController.getRegister);
+app.get("/userprofile", isLoggedIn, ShortenerController.index)
+app.get('/:shortUrl', ShortenerController.clickedLink)
 
+app.post("/login", passport.authenticate("local",{
+    successRedirect:"/userprofile",
+    failureRedirect:"/login"
+}), AuthController.login);
+app.post("/register", AuthController.signup)
+app.post("/logout", isLoggedIn, AuthController.logout)
+app.post('/shortUrls', isLoggedIn, ShortenerController.store)
+app.post('/update/:id', isLoggedIn, ShortenerController.update)
+app.post('/remove/:id', isLoggedIn, ShortenerController.remove)
+
+//MIDDLEWARE
+function isLoggedIn(req,res,next) {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 app.listen(PORT, (err) => {
     if (err) {
         console.log(err);

@@ -28,5 +28,13 @@ module.exports = {
                 res.redirect("/login");
             })    
         })
+    },
+    async logout(req, res) {
+        req.logout();
+        res.clearCookie('connect.sid', {
+            path: '/'
+        });
+        req.session.destroy();
+        res.redirect('/')
     }
 }
