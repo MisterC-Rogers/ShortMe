@@ -31,10 +31,14 @@ routes.post('/shortUrls', isLoggedIn, ShortenerController.store)
 routes.get('/:shortUrl', ShortenerController.clickedLink)
 routes.post('/update/:id', isLoggedIn, ShortenerController.update)
 routes.post('/remove/:id', isLoggedIn, ShortenerController.remove)
-routes.get("/logout",(req,res)=>{
+routes.get("/loggedout", isLoggedIn, (req, res) => {
     req.logout();
-    res.redirect("/");
-});
-
+    res.clearCookie('connect.sid', {
+        path: '/'
+    });
+    req.session.destroy(function (err) {
+        res.redirect('/');
+    });
+})
 
 module.exports = routes

@@ -13,18 +13,16 @@ module.exports = {
             shortUrl.length > 0 ?
                 await ShortUrl.create({ full: fullUrl, short: shortUrl, creator: req.user.username }) :
                 await ShortUrl.create({ full: fullUrl, creator: req.user.username })
-            res.redirect('userprofile')
+            res.redirect('/userprofile')
         } catch (error) {
             res.send(error.status, {message: `${error.message}`})
         }
     },
     async update(req, res) {
         const { shortUrl } = req.body
-        const currentUser = await User.findOne({ user: req.user.username })
         try {
             await ShortUrl.findOneAndUpdate({ "_id": {$eq: req.params.id}}, {"short": shortUrl} )
-            const shortUrls = await ShortUrl.find({ creator: {$eq: currentUser.username}})
-            res.render('userprofile', { shortUrls: shortUrls, user: currentUser })
+            res.redirect('/userprofile')
         } catch (error) {
             res.send(400, { message: `${error.message}`})
         }
@@ -41,11 +39,9 @@ module.exports = {
     },
     async remove(req, res) {
         const { id } = req.params
-        const currentUser = await User.findOne({ user: req.user.username })
-        const shortUrls = await ShortUrl.find({ creator: {$eq: currentUser.username}})
         try {
             await ShortUrl.findOneAndDelete({ "_id": { $eq: id }})
-            res.render('userprofile', { shortUrls: shortUrls, user: currentUser })
+            res.redirect('/userprofile')
         } catch (error) {
             res.sendStatus(400, {message: `${error.message}`})
         }

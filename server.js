@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./Models/User")
+const routes = require("./Routes")
 const app = express()
 
 const PORT = process.env.PORT || 5000
@@ -13,25 +14,34 @@ mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/shortener", {
     useUnifiedTopology: true
 })
 
-app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: false }))
 
 app.use(require("express-session")({
     secret: process.env.SECRET || "This is my super secret",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie:{
+        maxAge: 2*60*1000 
+    }
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 passport.use(new LocalStrategy(User.authenticate()));
 
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: true }))
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static("Static"));
 
-app.use(require('./routes'))
+app.use(function (req, res,next){
+    res.locals.currentUser = req.user;
+    next();
+})
+
+app.use(routes)
 
 app.listen(PORT, (err) => {
     if (err) {
