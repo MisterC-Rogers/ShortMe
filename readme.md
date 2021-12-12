@@ -51,6 +51,7 @@ npm run devStart
 | /shortUrls      | POST           | :white_check_mark: |   :white_check_mark: |
 | /login          | GET            |                    |   :white_check_mark: |
 | /login          | POST           |                    |   :white_check_mark: |
+| /logout         | POST           | :white_check_mark: |   :white_check_mark: |
 | /register       | GET            |                    |   :white_check_mark: |
 | /register       | POST           |                    |   :white_check_mark: |
 | /userprofile    | GET            | :white_check_mark: |   :white_check_mark: |
