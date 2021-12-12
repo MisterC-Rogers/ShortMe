@@ -28,7 +28,7 @@ npm install
 ##### Change credentials database (.env)
 
 ```
-MONGO_URL=mongodb+srv://<username>:<password>@<cluster>.0gypu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://<username>:<password>@<cluster>.0gypu.mongodb.net/<database>?retryWrites=true&w=majority
 SECRET="<Your secret string>"
 PORT=<your port number>
 ```
