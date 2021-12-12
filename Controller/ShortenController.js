@@ -1,4 +1,4 @@
-const ShortUrl = require('../models/ShortUrl')
+const ShortUrl = require('../Models/ShortUrl')
 const User = require('../Models/User')
 
 module.exports = {
