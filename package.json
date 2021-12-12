@@ -1,13 +1,26 @@
 {
-  "name": "subatomic-urlshortener",
+  "name": "url-shortener",
   "version": "1.0.0",
-  "description": "",
+  "description": "Custom URL Shortener and branded URLs with advanced links tracking and Link Management Platform & API. Targeted to users with the ability to register and log in. Shorten and replace a long URL with a short link.",
+  "homepage": "https://why-short-me.herokuapp.com/",
+  "keywords": [
+    "server-side",
+    "passport",
+    "ejs-template",
+    "nodejs",
+    "URL shortener"
+  ],
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
-  "author": "Charlie Rogers https://www.mister-rogers.com",
+  "author": {
+    "name": "Charlie Rogers",
+    "email": "charles.rogers2024@gmail.com",
+    "url": "https://www.mister-rogers.com"
+  },
+  "bugs": "https://github.com/MisterC-Rogers/ShortMe/issues",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
