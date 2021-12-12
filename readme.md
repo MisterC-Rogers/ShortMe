@@ -8,8 +8,10 @@ Made with:
 - [ExpressJS](http://expressjs.com/)
 - [Passport](https://www.passportjs.org/)
 - [MongoDB](https://www.mongodb.com/)
+
 Styles made with:
 - [Bootstrap5](https://getbootstrap.com/)
+
 Templates made with:
 - [eJS](https://ejs.co/)
 
