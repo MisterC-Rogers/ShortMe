@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>ShortMe Registration Page</title>
+</head>
+<body>
+    <%- include('nav') -%>
+    <div class="container">
+        <h1 class="text-center">SignUp Page</h1>
+        <form action="/register" method="POST" class="my-4">
+            <div class="mb-3">
+                <label for="first" class="form-label">First Name</label>
+                <input type="text" name="first" id="first" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="last" class="form-label">Last Name</label>
+                <input type="text" name="last" id="last" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">UserName</label>
+                <input type="text" id="username" name="username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" aria-describedby="emailHelp" name="email" class="form-control">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <%- include('footer') -%>
+</body>
+</html>
