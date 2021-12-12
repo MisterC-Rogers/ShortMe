@@ -3,12 +3,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
-const User = require("./Models/User")
+const User = require("./models/User")
 
 const app = express()
 
-const ShortenerController = require('./Controller/ShortenController')
-const AuthController = require('./Controller/AuthController')
+const ShortenerController = require('./controller/ShortenController')
+const AuthController = require('./controller/AuthController')
 const PORT = process.env.PORT || 5000
 
 mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/shortener", {
@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static("Static"));
+app.use(express.static("public"));
 
 app.use(function (req, res,next){
     res.locals.currentUser = req.user;

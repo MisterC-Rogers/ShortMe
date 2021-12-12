@@ -1,5 +1,5 @@
-const ShortUrl = require('../Models/ShortUrl')
-const User = require('../Models/User')
+const ShortUrl = require('../models/ShortUrl')
+const User = require('../models/User')
 
 module.exports = {
     async index(req, res) {
