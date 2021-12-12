@@ -1,7 +1,7 @@
 # URL Shortener
 -----
 
-Custom URL Shortener and branded URLs with advanced links tracking and Link Management Platform & API. Shorten and replace long URL to short link.
+Custom URL Shortener and branded URLs with advanced links tracking and Link Management Platform & API. Targeted to users with the ability to register and log in. Shorten and replace a long URL with a short link.
 
 Made with:
 - [NodeJS](https://nodejs.org/en/)
