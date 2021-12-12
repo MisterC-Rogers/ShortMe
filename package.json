@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "server.js"
+    "start": "node server.js"
   },
   "author": "Charlie Rogers https://www.mister-rogers.com",
   "license": "ISC",
