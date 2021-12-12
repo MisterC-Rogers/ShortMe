@@ -1,9 +1,17 @@
 # URL Shortener
 -----
 
-Free custom URL Shortener and branded URLs with advanced links tracking and Link Management Platform & API. Shorten and replace long URL to short link.
+Custom URL Shortener and branded URLs with advanced links tracking and Link Management Platform & API. Shorten and replace long URL to short link.
 
-Made with NodeJS, ExpressJS, and MongoDB
+Made with:
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](http://expressjs.com/)
+- [Passport](https://www.passportjs.org/)
+- [MongoDB](https://www.mongodb.com/)
+Styles made with:
+- [Bootstrap5](https://getbootstrap.com/)
+Templates made with:
+- [eJS](https://ejs.co/)
 
 ## Get Started
 
@@ -18,7 +26,9 @@ npm install
 ##### Change credentials database (.env)
 
 ```
-MONGO_URL=mongodb+srv://<username>:<password>@cluster0.kseg8.mongodb.net/<database>?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://<username>:<password>@<clustername>.0gypu.mongodb.net/<database>
+SECRET="<Your secret string>"
+PORT=<your port number>
 ```
 
 
@@ -32,8 +42,15 @@ npm run devStart
 
 ##### Routes
 
-| Route           | Type                    | Status               |
-| -------------   |:-------------:          |              -----:  |
-| /               | GET                     | :white_check_mark:   |
-| /shortUrls      | POST                    |   :white_check_mark: |
-| /:shortUrl      | GET                     |   :white_check_mark: |
+| Route           | Type           | Protected          | Status               |
+| -------------   |:-------------: |:-------------:     |              -----:  |
+| /               | GET            |                    |   :white_check_mark: |
+| /:shortUrl      | GET            |                    |   :white_check_mark: |
+| /shortUrls      | POST           | :white_check_mark: |   :white_check_mark: |
+| /login          | GET            |                    |   :white_check_mark: |
+| /login          | POST           |                    |   :white_check_mark: |
+| /register       | GET            |                    |   :white_check_mark: |
+| /register       | POST           |                    |   :white_check_mark: |
+| /userprofile    | GET            | :white_check_mark: |   :white_check_mark: |
+| /update/:id     | POST           | :white_check_mark: |   :white_check_mark: |
+| /remove/:id     | POST           | :white_check_mark: |   :white_check_mark: |
