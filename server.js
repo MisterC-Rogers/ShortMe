@@ -43,7 +43,7 @@ app.use(function (req, res,next){
     next();
 })
 
-app.get('/', (req, res) => {res.render("home")})
+app.get('/', (req, res) => { res.render("home") })
 app.get("/login", AuthController.getLogin);
 app.get("/register", AuthController.getRegister);
 app.get("/userprofile", isLoggedIn, ShortenerController.index)
